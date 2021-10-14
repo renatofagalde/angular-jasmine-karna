@@ -24,7 +24,6 @@
     "import-spacing": true,
     "indent": {
       "options": [
-        true,
         "tabs",
         4
       ]

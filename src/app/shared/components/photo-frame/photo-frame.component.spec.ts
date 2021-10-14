@@ -44,8 +44,7 @@ describe(PhotoFrameComponent.name, () => {
     expect(times).toBe(2);
   }));
 
-  it(`#${PhotoFrameComponent.prototype.likes}
-    should display number of likes when (@Input likes) is incremented`, () => {
+  it(`(D) should display number of likes when (@Input likes) is incremented`, () => {
     fixture.detectChanges();
     component.likes++;
     fixture.detectChanges();
@@ -56,7 +55,7 @@ describe(PhotoFrameComponent.name, () => {
     expect(value).toBe(1);
   });
 
-  it('Should update aria-label when (@Input likes)  is incremented', () => {
+  it('(D) Should update aria-label when (@Input likes)  is incremented', () => {
     fixture.detectChanges();
     component.likes++;
     fixture.detectChanges();
@@ -64,10 +63,23 @@ describe(PhotoFrameComponent.name, () => {
     expect(element.getAttribute('aria-label')).toBe('1: people liked');
   });
 
-  it('Should update aria-label with 0  (@Input likes)  is incremented', () => {
+  it('(D) Should update aria-label with 0  (@Input likes)  is incremented', () => {
     fixture.detectChanges();
 
     const element: HTMLElement = fixture.nativeElement.querySelector('span');
     expect(element.getAttribute('aria-label')).toBe('0: people liked');
+  });
+  it('(D) Should display image with stc and description when bound to properties', () => {
+    const description = 'some description';
+    const src = 'http://somesite.com/img.jpg';
+
+    component.src = src;
+    component.description = description;
+    fixture.detectChanges();
+
+    const img: HTMLImageElement=fixture.nativeElement.querySelector('img');
+    expect(img.getAttribute('src')).toBe(src);
+    expect(img.getAttribute('alt')).toBe(description);
+
   });
 });
